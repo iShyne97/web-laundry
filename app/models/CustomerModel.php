@@ -1,8 +1,8 @@
 <?php
 
-class ServiceModel
+class CustomerModel
 {
-    private $table = 'type_of_service';
+    private $table = 'customer';
     private $db;
 
     public function __construct()
@@ -10,13 +10,13 @@ class ServiceModel
         $this->db = new Database;
     }
 
-    public function getAllService()
+    public function getAllCustomer()
     {
         $this->db->query("SELECT * FROM {$this->table} ORDER BY id DESC");
         return $this->db->resultSet();
     }
 
-    public function deleteService($id)
+    public function deleteCustomer($id)
     {
         $query = "DELETE FROM {$this->table} WHERE id = :id";
 
@@ -28,41 +28,41 @@ class ServiceModel
         return $this->db->rowCount();
     }
 
-    public function getServiceById($id)
+    public function getCustomerById($id)
     {
         $this->db->query("SELECT * FROM {$this->table} WHERE id=:id");
         $this->db->bind('id', $id);
         return $this->db->single();
     }
 
-    public function addService($data)
+    public function addCustomer($data)
     {
-        $query = "INSERT INTO {$this->table} (service_name, price, description)
-                    VALUES(:service_name, :price, :description)";
+        $query = "INSERT INTO {$this->table} (customer_name, phone, address)
+                    VALUES(:customer_name, :phone, :address)";
 
         $this->db->query($query);
-        $this->db->bind('service_name', $data['service_name']);
-        $this->db->bind('price', $data['price']);
-        $this->db->bind('description', $data['description']);
+        $this->db->bind('customer_name', $data['customer_name']);
+        $this->db->bind('phone', $data['phone']);
+        $this->db->bind('address', $data['address']);
 
         $this->db->execute();
 
         return $this->db->rowCount();
     }
 
-    public function editService($data)
+    public function editCustomer($data)
     {
         $query = "UPDATE {$this->table} SET
-                        service_name = :service_name,
-                        price = :price,
-                        description = :description
+                        customer_name = :customer_name,
+                        phone = :phone,
+                        address = :address
                     WHERE id = :id";
 
 
         $this->db->query($query);
-        $this->db->bind('service_name', $data['service_name']);
-        $this->db->bind('price', $data['price']);
-        $this->db->bind('description', $data['description']);
+        $this->db->bind('customer_name', $data['customer_name']);
+        $this->db->bind('phone', $data['phone']);
+        $this->db->bind('address', $data['address']);
         $this->db->bind('id', $data['id']);
 
         $this->db->execute();

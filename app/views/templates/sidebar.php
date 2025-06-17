@@ -1,13 +1,13 @@
 <aside class="z-20 h-full row-span-2 col-start-1 row-start-1">
     <div
-        class="flex flex-col gap-2 h-full rounded-box backdrop-blur-xl bg-white/10 border border-white/20 shadow-lg shadow-white/10">
-        <div class="logo px-2 py-5 border-b border-base-300">
+        class="flex flex-col gap-2 h-full rounded-box backdrop-blur-xl bg-white/20 border border-base-content/10 shadow-lg shadow-white/10">
+        <div class="flex items-center gap-3 logo px-2 py-5 border-b border-slate-900/20 bg-base-300/40 rounded-box">
             <div class="avatar">
-                <div class="w-3xl rounded-xl">
-                    <img src="https://img.daisyui.com/images/profile/demo/yellingwoman@192.webp" />
+                <div class="mask mask-squircle w-14">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2173/2173860.png" />
                 </div>
             </div>
-            <span>Laundryku</span>
+            <span class="font-sans tracking-wider font-bold text-base-content text-xl">Londre</span>
         </div>
         <ul class="menu md:w-56">
             <label class="hidden md:flex text-md tracking-wider font-light my-3">Content</label>
@@ -87,6 +87,23 @@
                                         d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 Service
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?= BASEURL ?>/customer" class="hover:bg-base-50 p-2 rounded-md">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 text-yellow-500 mr-2"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Customer
                             </a>
                         </li>
                     </ul>

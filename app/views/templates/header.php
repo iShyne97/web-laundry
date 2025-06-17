@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?= BASEURL ?>/assets/css/style.css" />
+
+    <!-- Datatable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.1/css/dataTables.dataTables.css" />
+    <script src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.jqueryui.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -13,17 +18,8 @@
 
         <?php Notification::notif(); ?>
         <header
-            class="col-start-2 bg-base-100 text-base-content h-min shadow-sm shadow-white/10 light:shadow-slate-900/30 dark:shadow-slate-300/30 z-10">
-            <div class="flex justify-between items-center p-2">
-                <!-- <div
-            class="radial absolute bg-violet-600 w-40 h-40 rounded-full mix-blend-multiply blur-xl animate-blob opacity-70 -translate-y-1/2 right-[45%] top-1/2 lg:w-72 lg:h-72"
-          ></div>
-          <div
-            class="radial absolute bg-yellow-600 w-40 h-40 rounded-full mix-blend-multiply blur-xl animate-blob animation-delay-2000 opacity-70 -translate-y-1/2 left-[45%] top-1/2 lg:w-72 lg:h-72"
-          ></div>
-          <div
-            class="radial absolute bg-pink-600 w-40 h-40 rounded-full mix-blend-multiply blur-xl animate-blob animation-delay-4000 delay-[4s] opacity-70 -translate-x-1/2 -translate-y-1/2 left-1/2 top-[55%] lg:w-72 lg:h-72"
-          ></div> -->
+            class="col-start-2 bg-base/20 backdrop-blur-xl z-10 p-3">
+            <div class="flex justify-between items-center p-2 rounded-box backdrop-blur-xl bg-white/10 border border-base-content/10 ">
                 <label class="input">
                     <input type="search" required placeholder="Search" />
                     <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

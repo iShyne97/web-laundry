@@ -1,4 +1,5 @@
-<div class="w-full h-full">
+<div class="w-full h-full bg-amber-400">
+    test
     <div class=" mx-auto rounded-box border border-base-content/10 bg-base-100 shadow-lg shadow-slate-50/15 p-6">
         <div class="inline-block text-md tracking-widest font-semibold lg:text-lg 2xl:text-xl my-5 border-b border-base-content/10 py-3">ADD CUSTOMER</div>
         <form action="<?= BASEURL ?><?= isset($data['customer']) ? '/customer/edit/' . $data['customer']['id'] : '/customer/add' ?>" method="post">

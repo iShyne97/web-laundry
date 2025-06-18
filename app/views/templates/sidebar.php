@@ -91,17 +91,9 @@
                         </li>
                         <li>
                             <a href="<?= BASEURL ?>/customer" class="hover:bg-base-50 p-2 rounded-md">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-4 w-4 text-yellow-500 mr-2"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cyan-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12H9m12-8H3a2 2 0 00-2 2v4h20V6a2 2 0 00-2-2zm0 6H3v8a2 2 0 002 2h14a2 2 0 002-2v-8z" />
                                 </svg>
                                 Customer
                             </a>

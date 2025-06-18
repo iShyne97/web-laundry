@@ -6,7 +6,7 @@
     <div class="overflow-x-auto rounded-box border border-base-content/10 my-5 p-2">
         <table class="table lg:text-lg 2xl:text-xl" id="myTable">
             <!-- head -->
-            <thead>
+            <thead class="lg:text-lg 2xl:text-xl">
                 <tr>
                     <th>No</th>
                     <th>Name</th>
@@ -23,6 +23,7 @@
                         <td><?= $d['phone'] ?></td>
                         <td><?= $d['address'] ?></td>
                         <td>
+                            <a href="<?= BASEURL ?>/transaction/add/<?= $d['id'] ?>" class="btn btn-soft btn-info md:text-xs lg:text-md 2xl:text-lg">Add Order</a>
                             <a href="<?= BASEURL ?>/customer/edit/<?= $d['id'] ?>" class="btn btn-soft btn-success md:text-xs lg:text-md 2xl:text-lg">Edit</a>
                             <a href="<?= BASEURL ?>/customer/delete/<?= $d['id'] ?>" onclick="return confirm('Are you sure ?');" class="btn btn-soft btn-error md:text-xs lg:text-md 2xl:text-lg">Delete</a>
                         </td>

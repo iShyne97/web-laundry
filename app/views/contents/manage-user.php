@@ -60,7 +60,7 @@
                         <span class="text-pink-700">)* </span> Fill the password field if you want to change your password
                     </small>
                 <?php endif; ?>
-                <div class="validator-hint hidden">Enter valid NRP number</div>
+                <div class="validator-hint hidden">Enter valid password number</div>
             </fieldset>
             <fieldset class="fieldset">
                 <legend class="fieldset-legend lg:text-lg">Level</legend>

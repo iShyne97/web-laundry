@@ -4,9 +4,9 @@
         <a href="<?= BASEURL ?>/service/add" class="btn btn-primary lg:text-lg 2xl:text-xl 2xl:p-6">Add Service</a>
     </div>
     <div class="overflow-x-auto rounded-box border border-base-content/10 my-5 p-2">
-        <table class="table lg:text-lg 2xl:text-xl" id="table">
+        <table class="table lg:text-lg 2xl:text-xl" id="myTable">
             <!-- head -->
-            <thead>
+            <thead class="lg:text-lg 2xl:text-xl">
                 <tr>
                     <th>No</th>
                     <th>Service</th>

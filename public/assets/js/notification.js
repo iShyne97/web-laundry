@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
       toast.classList.add("opacity-0");
 
       setTimeout(() => {
-        toast.classList.add("hidden");
+        toast.classList.add("translate-x-full", "opacity-0");
       }, 700); // sesuai dengan duration
     }, 2000);
   }

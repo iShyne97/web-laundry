@@ -7,14 +7,27 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?= BASEURL ?>/assets/css/style.css" />
 
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+
     <!-- Datatable -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.1/css/dataTables.dataTables.css" />
-    <script src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
-    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.jqueryui.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
 </head>
 
 <body>
-    <div class="w-full h-screen grid grid-cols-[auto_1fr] grid-rows-[auto_1fr]">
+    <div class="w-full h-screen grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] overflow-hidden">
 
         <?php Notification::notif(); ?>
         <header

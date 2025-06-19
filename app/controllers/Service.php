@@ -64,4 +64,14 @@ class Service extends Controller
 
         $this->dashboardView('contents/manage-service', $data);
     }
+
+    public function getServiceData()
+    {
+        $data = [
+            'services' => $this->model('ServiceModel')->getAllService()
+        ];
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
 }

@@ -12,7 +12,7 @@
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Level</th>
-                    <th>Aksi</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>

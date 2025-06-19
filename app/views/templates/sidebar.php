@@ -132,7 +132,7 @@
                     <ul
                         class="bg-base-300 rounded-lg shadow-md p-2 hidden group-open:flex flex-col absolute left-full top-0 w-40 md:left-10 md:top-full md:static md:p-2 md:mt-2 md:block md:w-[calc(100%-1rem)]">
                         <li>
-                            <a href="<?= BASEURL ?>/orderstart" class="hover:bg-base-50 p-2 rounded-md">
+                            <a href="<?= BASEURL ?>/transaction" class="hover:bg-base-50 p-2 rounded-md">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     class="h-4 w-4 text-lime-500 mr-2"
@@ -145,7 +145,7 @@
                                         stroke-width="2"
                                         d="M8 16h8M8 12h8m-8-4h8M4 6h16M4 6v12h16V6H4z" />
                                 </svg>
-                                Order Start
+                                Data Transaction
                             </a>
                         </li>
                         <li>

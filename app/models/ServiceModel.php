@@ -12,15 +12,18 @@ class ServiceModel
 
     public function getAllService()
     {
-        $this->db->query("SELECT * FROM {$this->table} ORDER BY id DESC");
+        $this->db->query("SELECT * FROM {$this->table} WHERE deleted_at IS NULL ORDER BY id DESC");
         return $this->db->resultSet();
     }
 
     public function deleteService($id)
     {
-        $query = "DELETE FROM {$this->table} WHERE id = :id";
+        $date = Helper::generateDateTime();
+
+        $query = "UPDATE {$this->table} set deleted_at = :deleted_at WHERE id = :id";
 
         $this->db->query($query);
+        $this->db->bind('deleted_at', $date);
         $this->db->bind('id', $id);
 
         $this->db->execute();

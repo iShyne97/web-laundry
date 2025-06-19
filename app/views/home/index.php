@@ -2,7 +2,7 @@
 <?php require_once '../app/views/templates/sidebar.php'; ?>
 
 
-<main class="col-start-2 relative bg-base-300 text-base-content">
+<main class="col-start-2 relative bg-base-300 text-base-content overflow-y-auto">
     <div
         class="radial absolute bg-violet-600 w-40 h-40 rounded-full blur-xl animate-blob opacity-70 -translate-y-1/2 right-[50%] top-1/2 lg:w-120 lg:h-120 md:w-80 md:h-80"></div>
     <div

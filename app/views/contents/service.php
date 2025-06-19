@@ -12,7 +12,7 @@
                     <th>Service</th>
                     <th>Price</th>
                     <th>Descripton</th>
-                    <th>Aksi</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>

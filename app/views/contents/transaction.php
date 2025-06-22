@@ -29,7 +29,7 @@
                         <td><?= $d['order_code'] ?></td>
                         <td><?= Helper::LocalDate($d['order_date']) ?></td>
                         <td><?= Helper::LocalDate($d['order_end_date']) ?></td>
-                        <td><?= $d['order_status'] == 0 ? '<span class="rounded-full py-2 px-5 text-sm lg:text-lg bg-blue-400 text-white">Washing</span>' : '<span class="rounded-full py-2 px-5 text-sm lg:text-lg bg-green-400 text-white">Finished</span>' ?></td>
+                        <td><?= $d['order_status'] == 0 ? '<span class="rounded-full py-2 px-5 text-sm lg:text-lg bg-blue-400 text-white">In Machine</span>' : '<span class="rounded-full py-2 px-5 text-sm lg:text-lg bg-green-400 text-white">Retrieved</span>' ?></td>
                         <td>
                             <a href="<?= BASEURL ?>/transaction/detail/<?= $d['id'] ?>" class="btn btn-soft btn-danger md:text-xs lg:text-md 2xl:text-lg detail" data-id="<?= $d['id']; ?>">
                                 Detail</a>

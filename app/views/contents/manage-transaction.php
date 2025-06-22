@@ -162,7 +162,7 @@
 
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${counter}</td>
+            <td>${counter++}</td>
             <td>
                 ${serviceText}
                 <input type="hidden" name="id_service[]" value="${serviceValue}">

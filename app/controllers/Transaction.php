@@ -54,6 +54,17 @@ class Transaction extends Controller
         }
     }
 
+    public function detail($id)
+    {
+        $transaction = $this->model('TransactionModel')->getTransactionById($id);
+        $detail = $this->model('TransactionDetailModel')->getDetailTransactionByOrderCode($transaction['order_code']);
+        $data = [
+            'transaction' => $transaction,
+            'details_transaction' => $detail
+        ];
+        $this->dashboardView('contents/details-transaction', $data);
+    }
+
     public function printReceipt($id)
     {
         $transaction = $this->model('TransactionModel')->getTransactionById($id);
@@ -68,5 +79,18 @@ class Transaction extends Controller
         // exit;
 
         $this->viewOnly('reports/receipt', $data);
+    }
+
+    public function reportTransaction($print = false)
+    {
+        $data = [
+            "total" => $this->model('TransactionModel')->getTotalTransaction($_POST),
+            "transactions" => $this->model('TransactionModel')->getTransactionByStatusAndDate($_POST)
+        ];
+        if ($print) {
+            $this->viewOnly('reports/transactions', $data);
+        } else {
+            $this->dashboardView('contents/report-transaction', $data);
+        }
     }
 }

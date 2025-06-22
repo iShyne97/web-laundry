@@ -90,20 +90,20 @@
                                 <input type="hidden" name="order_code" value="<?= $order_code ?>" />
                             </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td>Order Start</td>
                             <td>:</td>
                             <td><input type="date" name="order_date" class="input" min="<?= date('Y-m-d') ?>" required /></td>
-                        </tr>
+                        </tr> -->
                         <tr>
-                            <td>Order End</td>
+                            <td>Finish Date</td>
                             <td>:</td>
                             <td><input type="date" name="order_end_date" class="input" min="<?= date('Y-m-d') ?>" required /></td>
                         </tr>
                         <tr>
                             <td>Amount Paid</td>
                             <td>:</td>
-                            <td><input type="number" name="order_pay" id="order_pay" class="input" required /></td>
+                            <td><input type="number" name="order_pay" id="order_pay" class="input" /></td>
                         </tr>
                         <tr>
                             <td>Change Due</td>
@@ -133,7 +133,7 @@
         .then(response => response.json())
         .then(data => {
             servicesData = data.services;
-            console.log(data.services);
+            // console.log(data.services);
         });
 
 
@@ -169,7 +169,7 @@
             </td>
             <td>
                 ${weightInKg} kg
-                <input type="hidden" name="qty[]" value="${weightInKg}">
+                <input type="hidden" name="qty[]" value="${weight}">
             </td>
             <td>
                 ${subtotal}

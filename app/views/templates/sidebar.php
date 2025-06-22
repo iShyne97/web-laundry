@@ -102,9 +102,33 @@
                 </details>
             </li>
 
-            <label class="hidden md:flex text-md tracking-wider font-light my-3">Transaction</label>
+            <label class="hidden md:flex text-md tracking-wider font-light my-3">Sales</label>
 
             <li class="my-2">
+                <a href="<?= BASEURL ?>/transaction"
+                    class="transition-all duration-300 bg-gradient-to-r from-fuchsia-600 to-fuchsia-400 bg-[length:0%_100%] hover:bg-[length:100%_100%] bg-left bg-no-repeat rounded hover:text-white group">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 text-pink-500 group-hover/item:text-white"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 8c-1.657 0-3 1.343-3 3v4h6v-4c0-1.657-1.343-3-3-3z" />
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M5 12h14M12 22c1.104 0 2-.896 2-2H10c0 1.104.896 2 2 2z" />
+                    </svg>
+                    <span class="hidden md:flex">Transaction</span>
+                </a>
+            </li>
+
+            <!-- <li class="my-2">
                 <details class="group relative">
                     <summary
                         class="flex justify-between items-center cursor-pointer hover:bg-base-300 rounded transition-all duration-300 bg-gradient-to-r from-fuchsia-600 to-fuchsia-400 bg-[length:0%_100%] hover:bg-[length:100%_100%] bg-left bg-no-repeat hover:text-white">
@@ -126,7 +150,7 @@
                                     stroke-width="2"
                                     d="M5 12h14M12 22c1.104 0 2-.896 2-2H10c0 1.104.896 2 2 2z" />
                             </svg>
-                            <span class="hidden md:flex">Sales</span>
+                            <span class="hidden md:flex">Transaction</span>
                         </div>
                     </summary>
                     <ul
@@ -145,7 +169,7 @@
                                         stroke-width="2"
                                         d="M8 16h8M8 12h8m-8-4h8M4 6h16M4 6v12h16V6H4z" />
                                 </svg>
-                                Data Transaction
+                                Order Start
                             </a>
                         </li>
                         <li>
@@ -167,6 +191,27 @@
                         </li>
                     </ul>
                 </details>
+            </li> -->
+
+            <label class="hidden md:flex text-md tracking-wider font-light my-3">Report</label>
+
+            <li class="my-2">
+                <a href="<?= BASEURL ?>/transaction/reportTransaction"
+                    class="transition-all duration-300 bg-gradient-to-r from-fuchsia-600 to-fuchsia-400 bg-[length:0%_100%] hover:bg-[length:100%_100%] bg-left bg-no-repeat rounded hover:text-white group">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4 text-red-500 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7" />
+                    </svg>
+                    <span class="hidden md:flex">Data Transaction</span>
+                </a>
             </li>
         </ul>
     </div>

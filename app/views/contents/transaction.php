@@ -10,6 +10,8 @@
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
+                    <th>Phone</th>
+                    <th>Address</th>
                     <th>No Transaction</th>
                     <th>Order Date</th>
                     <th>Order Finish</th>
@@ -22,12 +24,15 @@
                     <tr>
                         <td><?= $key + 1 ?></td>
                         <td><?= $d['cust_name'] ?></td>
+                        <td><?= $d['cust_phone'] ?></td>
+                        <td><?= $d['cust_address'] ?></td>
                         <td><?= $d['order_code'] ?></td>
                         <td><?= Helper::LocalDate($d['order_date']) ?></td>
                         <td><?= Helper::LocalDate($d['order_end_date']) ?></td>
                         <td><?= $d['order_status'] == 0 ? '<span class="rounded-full py-2 px-5 text-sm lg:text-lg bg-blue-400 text-white">Washing</span>' : '<span class="rounded-full py-2 px-5 text-sm lg:text-lg bg-green-400 text-white">Finished</span>' ?></td>
                         <td>
-                            <a href="<?= BASEURL ?>/transaction/detail/<?= $d['id'] ?>" class="btn btn-soft btn-danger md:text-xs lg:text-md 2xl:text-lg">Detail</a>
+                            <a href="<?= BASEURL ?>/transaction/detail/<?= $d['id'] ?>" class="btn btn-soft btn-danger md:text-xs lg:text-md 2xl:text-lg detail" data-id="<?= $d['id']; ?>">
+                                Detail</a>
                             <a href="<?= BASEURL ?>/transaction/delete/<?= $d['id'] ?>" onclick="return confirm('Are you sure ?');" class="btn btn-soft btn-error md:text-xs lg:text-md 2xl:text-lg">Delete</a>
                             <a href="<?= BASEURL ?>/transaction/printReceipt/<?= $d['id'] ?>" class="btn btn-soft btn-success md:text-xs lg:text-md 2xl:text-lg">
                                 <!-- <button class="btn btn-soft btn-success md:text-xs lg:text-md 2xl:text-lg" onclick="window.print()"> -->

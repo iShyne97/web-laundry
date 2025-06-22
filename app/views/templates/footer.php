@@ -1,3 +1,4 @@
+</div>
 <script>
     $('#myTable').DataTable();
 </script>

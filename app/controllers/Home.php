@@ -13,6 +13,9 @@ class Home extends Controller
 
     public function index()
     {
-        $this->dashboardView('home/index');
+        $data = [
+            "dashboard" => true
+        ];
+        $this->dashboardView('home/index', $data);
     }
 }

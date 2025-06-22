@@ -1,16 +1,16 @@
 <div class="w-full mx-auto rounded-box border border-base-content/10 bg-base-100 shadow-lg shadow-slate-50/15 p-5">
     <div class="tracking-widest font-semibold text-lg 2xl:text-2xl text-center border-b border-base-content/10 p-3">Report Transaction</div>
-    <div class="flex justify-between items-center my-5 p-3">
+    <div class="lg:flex justify-between items-center my-5 p-3">
         <form action="<?= BASEURL ?>/transaction/reportTransaction" method="post">
             <div class="flex items-center gap-2">
                 <input type="date" name="start" value="<?= $_POST['start'] ?? '' ?>" class="input" onchange="this.form.submit()" /> -
                 <input type="date" name="end" value="<?= $_POST['end'] ?? '' ?>" class="input" onchange="this.form.submit()" />
-                <a href="<?= BASEURL ?>/transaction/reportTransaction/true?start=<?= $_POST['start'] ?? '' ?>&end=<?= $_POST['end'] ?? '' ?>" class="btn btn-soft btn-success md:text-xs lg:text-md 2xl:text-lg" target="_blank">
+                <a href="<?= BASEURL ?>/transaction/reportTransaction/true?start=<?= $_POST['start'] ?? '' ?>&end=<?= $_POST['end'] ?? '' ?>" class="btn btn-soft btn-success md:text-xs lg:text-md 2xl:text-lg">
                     Print
                 </a>
             </div>
         </form>
-        <div class="tracking-widest font-semibold text-lg 2xl:text-2xl text-center border-b border-base-content/10 p-3">Grand Total <span class="rounded-full px-5 py-3 bg-fuchsia-600"><?= Helper::rupiah($data['total']['total_tr']) ?></span></div>
+        <div class="flex items-center gap-3 tracking-widest font-semibold text-lg 2xl:text-2xl text-center border-b border-base-content/10 p-3">Income <span class="block rounded-full px-5 py-3 bg-fuchsia-600"><?= Helper::rupiah($data['total']['total_tr']) ?></span></div>
         <!-- <a href="<?= BASEURL ?>/user/add" class="btn btn-primary lg:text-lg 2xl:text-xl 2xl:p-6">Add User</a> -->
     </div>
 

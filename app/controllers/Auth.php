@@ -12,7 +12,11 @@ class Auth extends Controller
         $users = $this->model('UserModel');
         $user = $users->getUserByEmailAndPassword($_POST['email'], $_POST['password']);
         if ($user) {
-            $_SESSION['user'] = $user;
+            $_SESSION['user'] = [
+                'id' => $user['id'],
+                'id_level' => $user['id_level'],
+                'nama' => $user['nama']
+            ];
             header('Location: ' . BASEURL . '/home');
             exit;
         } else {

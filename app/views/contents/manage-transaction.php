@@ -114,7 +114,7 @@
                             <td colspan="3" class="p-2">
                                 <div class="flex w-full gap-2">
                                     <button type="submit" class="btn btn-primary rounded-box font-bold w-1/2">Save</button>
-                                    <a href="<?= BASEURL ?>/transaction" class="btn btn-danger rounded-box w-1/2 text-center">Cancel</a>
+                                    <a href="<?= BASEURL ?>/customer" class="btn btn-danger rounded-box w-1/2 text-center">Cancel</a>
                                 </div>
                             </td>
                         </tr>

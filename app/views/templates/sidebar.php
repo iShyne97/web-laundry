@@ -10,7 +10,7 @@
             <span class="font-sans tracking-wider font-bold text-base-content text-xl">Londre</span>
         </div>
         <ul class="menu md:w-56">
-            <label class="hidden md:flex text-md tracking-wider font-light my-3">Content</label>
+            <!-- <label class="hidden md:flex text-md tracking-wider font-light my-3">Content</label>
 
             <li class="my-2">
                 <a href="<?= BASEURL ?>/home"
@@ -29,7 +29,7 @@
                     </svg>
                     <span class="hidden md:flex">Dashboard</span>
                 </a>
-            </li>
+            </li> -->
 
             <?php if ($_SESSION['user']['id_level'] == 1): ?>
                 <label class="hidden md:flex text-md tracking-wider font-light my-3">Data</label>
@@ -96,6 +96,51 @@
                                             d="M15 12H9m12-8H3a2 2 0 00-2 2v4h20V6a2 2 0 00-2-2zm0 6H3v8a2 2 0 002 2h14a2 2 0 002-2v-8z" />
                                     </svg>
                                     Customer
+                                </a>
+                            </li>
+                        </ul>
+                    </details>
+                </li>
+                <label class="hidden md:flex text-md tracking-wider font-light my-3">Sales</label>
+                <li class="my-2">
+                    <details class="group relative">
+                        <summary
+                            class="group flex justify-between items-center cursor-pointer transition-all duration-300 bg-gradient-to-r from-fuchsia-600 to-fuchsia-400 bg-[length:0%_100%] hover:bg-[length:100%_100%] bg-left bg-no-repeat hover:text-white">
+                            <div class="flex w-full h-full items-center gap-2 group/item">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5 text-blue-500 group-hover/item:text-white transition-colors duration-300"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12h6m-6 4h6m2 4H7a2 2 0 01-2-2V6a2 2 0 012-2h5l5 5v11a2 2 0 01-2 2z" />
+                                </svg>
+                                <span class="hidden md:flex">Transactions</span>
+                            </div>
+                        </summary>
+                        <ul
+                            class="bg-base-300 rounded-lg shadow-md p-2 hidden group-open:flex flex-col absolute left-full top-0 w-40 md:left-10 md:top-full md:static md:p-2 md:mt-2 md:block md:w-[calc(100%-1rem)]">
+                            <li class="my-2">
+                                <a href="<?= BASEURL ?>/transaction"
+                                    class="hover:bg-base-50 p-2 rounded-md">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-5 w-5 text-pink-500 group-hover/item:text-white"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M12 8c-1.657 0-3 1.343-3 3v4h6v-4c0-1.657-1.343-3-3-3z" />
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M5 12h14M12 22c1.104 0 2-.896 2-2H10c0 1.104.896 2 2 2z" />
+                                    </svg>
+                                    <span class="hidden md:flex">Cashier</span>
                                 </a>
                             </li>
                         </ul>

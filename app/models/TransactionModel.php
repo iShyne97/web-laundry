@@ -69,15 +69,15 @@ class TransactionModel
         return $this->db->rowCount();
     }
 
-    public function updateStatus($id)
+    public function updateStatus($id, $status = 1)
     {
         $query = "UPDATE trans_order SET
-                        order_status = 1
-                    WHERE id = :id";
+                order_status = :status
+              WHERE id = :id";
 
         $this->db->query($query);
         $this->db->bind('id', $id);
-
+        $this->db->bind('status', $status);
         $this->db->execute();
 
         return $this->db->rowCount();
@@ -102,41 +102,51 @@ class TransactionModel
 
     public function getTransactionByStatusAndDate($date)
     {
-        if ($date) {
+        if (!empty($date['start']) && !empty($date['end'])) {
             $query = "SELECT {$this->table}.*, customer.customer_name AS cust_name
-                    FROM {$this->table}
-                    JOIN customer ON {$this->table}.id_customer = customer.id
-                    WHERE {$this->table}.deleted_at IS NULL AND {$this->table}.order_status = 1 AND order_date BETWEEN :start AND :end 
-                    ORDER BY order_date ASC";
+                FROM {$this->table}
+                JOIN customer ON {$this->table}.id_customer = customer.id
+                WHERE {$this->table}.deleted_at IS NULL 
+                    AND {$this->table}.order_status = 1 
+                    AND order_date BETWEEN :start AND :end
+                ORDER BY order_date ASC";
+
             $this->db->query($query);
-            $this->db->bind(':start', $date['start']);
-            $this->db->bind(':end', $date['end']);
+            $this->db->bind(':start', $date['start'] . ' 00:00:00');
+            $this->db->bind(':end', $date['end'] . ' 23:59:59');
         } else {
             $query = "SELECT {$this->table}.*, customer.customer_name AS cust_name
-                                FROM {$this->table}
-                                JOIN customer ON {$this->table}.id_customer = customer.id
-                                WHERE {$this->table}.deleted_at IS NULL AND {$this->table}.order_status = 1
-                                ORDER BY {$this->table}.id DESC";
+                FROM {$this->table}
+                JOIN customer ON {$this->table}.id_customer = customer.id
+                WHERE {$this->table}.deleted_at IS NULL 
+                    AND {$this->table}.order_status = 1
+                ORDER BY order_date ASC";
+
             $this->db->query($query);
         }
+
         return $this->db->resultSet();
     }
 
-    public function getTotalTransaction($date = null)
+    public function getTotalTransaction($date)
     {
-        if ($date) {
+        if (!empty($date['start']) && !empty($date['end'])) {
             $query = "SELECT SUM(total) AS total_tr 
-                        FROM {$this->table}
-                        WHERE {$this->table}.deleted_at IS NULL AND {$this->table}.order_status = 1 AND order_date BETWEEN :start AND :end ";
+                  FROM {$this->table}
+                  WHERE deleted_at IS NULL AND order_status = 1 
+                    AND order_date BETWEEN :start AND :end";
+
             $this->db->query($query);
-            $this->db->bind(':start', $date['start']);
-            $this->db->bind(':end', $date['end']);
+            $this->db->bind(':start', $date['start'] . ' 00:00:00');
+            $this->db->bind(':end', $date['end'] . ' 23:59:59');
         } else {
             $query = "SELECT SUM(total) AS total_tr 
-                        FROM {$this->table}
-                        WHERE {$this->table}.deleted_at IS NULL AND {$this->table}.order_status = 1";
+                  FROM {$this->table}
+                  WHERE deleted_at IS NULL AND order_status = 1";
+
             $this->db->query($query);
         }
+
         return $this->db->single();
     }
 }

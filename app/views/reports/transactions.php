@@ -32,25 +32,36 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data['transactions'] as $key => $d) : ?>
-                    <tr class="odd:bg-white even:bg-gray-50">
-                        <td class="border px-2 py-1 text-center"><?= $key + 1 ?></td>
-                        <td class="border px-2 py-1"><?= $d['cust_name'] ?></td>
-                        <td class="border px-2 py-1"><?= $d['order_code'] ?></td>
-                        <td class="border px-2 py-1"><?= Helper::LocalDate($d['order_date']) ?></td>
-                        <td class="border px-2 py-1"><?= Helper::LocalDate($d['order_end_date']) ?></td>
-                        <td class="border px-2 py-1"><?= Helper::rupiah($d['order_pay']) ?></td>
-                        <td class="border px-2 py-1"><?= Helper::rupiah($d['order_change']) ?></td>
-                        <td class="border px-2 py-1"><?= Helper::rupiah($d['total']) ?></td>
+                <?php if (count($data['transactions']) > 0) : ?>
+                    <?php foreach ($data['transactions'] as $key => $d) : ?>
+                        <tr class="odd:bg-white even:bg-gray-50">
+                            <td class="border px-2 py-1 text-center"><?= $key + 1 ?></td>
+                            <td class="border px-2 py-1"><?= $d['cust_name'] ?></td>
+                            <td class="border px-2 py-1"><?= $d['order_code'] ?></td>
+                            <td class="border px-2 py-1"><?= Helper::LocalDate($d['order_date']) ?></td>
+                            <td class="border px-2 py-1"><?= Helper::LocalDate($d['order_end_date']) ?></td>
+                            <td class="border px-2 py-1"><?= Helper::rupiah($d['order_pay']) ?></td>
+                            <td class="border px-2 py-1"><?= Helper::rupiah($d['order_change']) ?></td>
+                            <td class="border px-2 py-1"><?= Helper::rupiah($d['total']) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <tr>
+                        <td colspan="8" class="border px-2 py-4 text-center text-gray-500 italic">
+                            Tidak ada data transaksi pada periode tersebut.
+                        </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php endif; ?>
             </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="7" class="border px-2 py-1 text-right font-semibold">Grand Total</td>
-                    <td class="border px-2 py-1 font-bold"><?= Helper::rupiah($data['total']['total_tr']) ?></td>
-                </tr>
-            </tfoot>
+
+            <?php if (count($data['transactions']) > 0) : ?>
+                <tfoot>
+                    <tr>
+                        <td colspan="7" class="border px-2 py-1 text-right font-semibold">Grand Total</td>
+                        <td class="border px-2 py-1 font-bold"><?= Helper::rupiah($data['total']['total_tr']) ?></td>
+                    </tr>
+                </tfoot>
+            <?php endif; ?>
         </table>
     </div>
 

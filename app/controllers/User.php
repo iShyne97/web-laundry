@@ -50,7 +50,7 @@ class User extends Controller
         $user = $this->model('UserModel')->getUserById($id);
         $data = [
             'levels' => $levels,
-            'user' => $user
+            'user' => empty($user) ? 'NotFound' : $user
         ];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -24,15 +24,15 @@ class Pickup extends Controller
             }
 
             if ($this->model('PickupModel')->addPickup($_POST) > 0) {
-                if ($this->model('TransactionModel')->updateStatus($id_transaction) > 0) {
-                    Notification::setNotif('Pickup has been ', ADDED, 'success');
-                    header('Location: ' . BASEURL . '/transaction');
-                    exit;
-                } else {
-                    Notification::setNotif('Update status transaction failed to be', UPDATED, 'error');
-                    header('Location: ' . BASEURL . '/transaction');
-                    exit;
-                }
+                // if ($this->model('TransactionModel')->updateStatus($id_transaction) > 0) {
+                Notification::setNotif('Pickup has been ', ADDED, 'success');
+                header('Location: ' . BASEURL . '/transaction');
+                exit;
+                // } else {
+                //     Notification::setNotif('Update status transaction failed to be', UPDATED, 'error');
+                //     header('Location: ' . BASEURL . '/transaction');
+                //     exit;
+                // }
             } else {
                 Notification::setNotif('Pickup failed to be', ADDED, 'error');
                 header('Location: ' . BASEURL . '/transaction');

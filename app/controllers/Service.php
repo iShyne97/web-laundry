@@ -45,7 +45,7 @@ class Service extends Controller
     {
         $service = $this->model('ServiceModel')->getServiceById($id);
         $data = [
-            'service' => $service
+            'service' => empty($service) ? 'NotFound' : $service
         ];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -57,7 +57,7 @@ class Transaction extends Controller
     public function detail($id)
     {
         $transaction = $this->model('TransactionModel')->getTransactionById($id);
-        $detail = $this->model('TransactionDetailModel')->getDetailTransactionByOrderCode($transaction['order_code']);
+        $detail = $this->model('TransactionDetailModel')->getDetailTransactionByOrderCode(isset($transaction['order_code']) ? $transaction['order_code'] : 'null');
         $data = [
             'transaction' => $transaction,
             'details_transaction' => $detail
@@ -83,14 +83,47 @@ class Transaction extends Controller
 
     public function reportTransaction($print = false)
     {
+        $filter = [];
+
+        if ($print && isset($_GET['start'], $_GET['end']) && $_GET['start'] && $_GET['end']) {
+            $filter = [
+                'start' => $_GET['start'],
+                'end'   => $_GET['end']
+            ];
+        } elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['start']) && !empty($_POST['end'])) {
+            $filter = [
+                'start' => $_POST['start'],
+                'end'   => $_POST['end']
+            ];
+        }
+
         $data = [
-            "total" => $this->model('TransactionModel')->getTotalTransaction($_POST),
-            "transactions" => $this->model('TransactionModel')->getTransactionByStatusAndDate($_POST)
+            "total" => $this->model('TransactionModel')->getTotalTransaction($filter),
+            "transactions" => $this->model('TransactionModel')->getTransactionByStatusAndDate($filter)
         ];
+
         if ($print) {
             $this->viewOnly('reports/transactions', $data);
         } else {
             $this->dashboardView('contents/report-transaction', $data);
         }
+    }
+
+    public function updateStatus()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $status = $_POST['status'];
+
+            if ($this->model('TransactionModel')->updateStatus($id, $status) > 0) {
+                Notification::setNotif('Status berhasil diperbarui', UPDATED, 'success');
+            } else {
+                Notification::setNotif('Status gagal diperbarui', UPDATED, 'error');
+            }
+
+            header('Location: ' . BASEURL . '/transaction');
+            exit;
+        }
+        $this->dashboardView('contents/transaction', $this->model('TransactionModel')->getAllTransaction());
     }
 }

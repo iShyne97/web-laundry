@@ -17,7 +17,11 @@ class Auth extends Controller
                 'id_level' => $user['id_level'],
                 'nama' => $user['nama']
             ];
-            header('Location: ' . BASEURL . '/home');
+            if ($_SESSION['user']['id_level'] === 2) {
+                header('Location: ' . BASEURL . '/operator');
+            } else {
+                header('Location: ' . BASEURL . '/home');
+            }
             exit;
         } else {
             header('Location: ' . BASEURL . '/auth');

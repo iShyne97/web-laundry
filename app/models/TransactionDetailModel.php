@@ -38,4 +38,18 @@ class TransactionDetailModel
         $this->db->bind('id_order', $order_code);
         return $this->db->resultSet();
     }
+
+    public function addOperatorDetailTransaction($id_order, $items)
+    {
+        foreach ($items as $item) {
+            $this->db->query("INSERT INTO trans_order_detail (id_order, id_service, qty, sub_total) 
+                          VALUES (:id_order, :id_service, :qty, :sub_total)");
+            $this->db->bind('id_order', $id_order);
+            $this->db->bind('id_service', $item['id_service']);
+            $this->db->bind('qty', $item['weight']);
+            $this->db->bind('sub_total', $item['subtotal']);
+            $this->db->execute();
+        }
+        return true;
+    }
 }

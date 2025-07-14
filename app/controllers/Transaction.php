@@ -126,4 +126,112 @@ class Transaction extends Controller
         }
         $this->dashboardView('contents/transaction', $this->model('TransactionModel')->getAllTransaction());
     }
+
+    public function addOperatorTransaction()
+    {
+        header('Content-Type: application/json'); // WAJIB
+
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+
+        if (!$data) {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Data tidak valid!',
+            ]);
+            return;
+        }
+
+        $data['order_code'] = 'TR-' . date('dmYHis');
+
+        $model = $this->model('TransactionModel');
+        $saved = $model->addOperatorTransaction($data);
+
+        if ($saved > 0) {
+            $id_order = $data['order_code'];
+            $detailModel = $this->model('TransactionDetailModel');
+            $detailModel->addOperatorDetailTransaction($id_order, $data['items']);
+
+            echo json_encode([
+                'success' => true,
+                'message' => 'Transaksi berhasil disimpan!',
+            ]);
+        } else {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Gagal menyimpan transaksi utama!',
+            ]);
+        }
+    }
+
+    public function getRecentTransactions()
+    {
+        header('Content-Type: application/json');
+
+        $model = $this->model('TransactionModel');
+        $transactions = $model->getAllTransactions();
+
+        // Ambil hanya 5 transaksi terakhir
+        $recent = array_slice(array_reverse($transactions), 0, 5);
+
+        echo json_encode($recent);
+    }
+
+    public function getAllTransactions()
+    {
+        header('Content-Type: application/json');
+
+        $model = $this->model('TransactionModel');
+        $transactions = $model->getAllTransaction();
+
+        echo json_encode($transactions);
+    }
+
+    public function getReportData()
+    {
+        header('Content-Type: application/json');
+
+        $month = date('m');
+        $year = date('Y');
+
+        $model = $this->model('TransactionModel');
+        $summary = $model->getTransactionSummary($month, $year);
+        $services = $model->getMonthlyReport($month, $year);
+
+        echo json_encode([
+            'summary' => $summary,
+            'services' => $services
+        ]);
+    }
+
+    public function updatePayment()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = [
+                'id' => $_POST['id'],
+                'order_pay' => $_POST['order_pay'],
+                'order_change' => $_POST['order_change']
+            ];
+
+            if ($this->model('TransactionModel')->updatePayment($data) > 0) {
+                echo json_encode([
+                    'success' => true,
+                    'message' => 'Payment berhasil disimpan!',
+                ]);
+            } else {
+                echo json_encode([
+                    'success' => false,
+                    'message' => 'Gagal menyimpan payment!',
+                ]);
+            }
+        }
+    }
+
+    public function getDailyStats()
+    {
+        header('Content-Type: application/json');
+        $model = $this->model('TransactionModel');
+        $stats = $model->getTodayStats();
+        echo json_encode($stats);
+    }
 }

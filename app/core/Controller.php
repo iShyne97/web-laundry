@@ -4,7 +4,11 @@ class Controller
 {
     public function dashboardView($view, $data = [])
     {
-        require_once '../app/views/home/index.php';
+        if ($_SESSION['user']['id_level'] === 2) {
+            header('Location: ' . BASEURL . '/operator');
+        } else {
+            require_once '../app/views/home/index.php';
+        }
     }
 
     public function loginView($view, $data = [])

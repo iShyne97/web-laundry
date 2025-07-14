@@ -13,9 +13,13 @@ class Home extends Controller
 
     public function index()
     {
-        $data = [
-            "dashboard" => true
-        ];
-        $this->dashboardView('home/index', $data);
+        if ($_SESSION['user']['id_level'] === 2) {
+            $this->viewOnly('contents/operator-pos');
+        } else {
+            $data = [
+                "dashboard" => true
+            ];
+            $this->dashboardView('home/index', $data);
+        }
     }
 }
